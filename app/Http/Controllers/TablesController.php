@@ -15,25 +15,29 @@ class TablesController extends Controller
     public function allTables()
     {
         $allTables = Tables::all();
-        return Response::json($allTables);
+        return $allTables ;
+       // return Response::json($allTables)->withCallback($request->input('allTables'));
     }
 
     public function reservedTables()
     {
         $reserved = Tables::all()->where('isReserved' ,'=' ,'1');
-        return Response::json($reserved);
+        return $reserved ;
+        //return Response::json($reserved);
     }
     public function unreservedTables()
     {
         $Not_reserved = Tables::all()->where('isReserved' ,'=' ,'0');
-        return Response::json($Not_reserved);
+        return $Not_reserved ;
+        //return Response::json($Not_reserved);
     }
 
     public function tableByID($id)
     {
         $table = Tables::find($id);
         $isReserved = $table->isReserved;
-        return Response::json($isReserved);
+        return $isReserved;
+        //return Response::json($isReserved);
     }
 
     /**

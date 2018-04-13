@@ -15,8 +15,8 @@ class CreateWorkersTable extends Migration
     {
         Schema::create('workers', function (Blueprint $table) {
             $table->increments('workerId');
-            $table->integer('userId');
-            $table->integer('resId');
+            $table->integer('user_id');
+            $table->integer('res_id');
             $table->string('workerType');
             $table->timestamps();
         });

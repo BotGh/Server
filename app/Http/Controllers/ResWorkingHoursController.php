@@ -23,11 +23,13 @@ class ResWorkingHoursController extends Controller
 
         if ($currentTime > $startTime || $currentTime < $endTime)
         {
-            return Response::json($status);
+            return $status;
+            //return Response::json($status);
         }
         else
         {
-            return Response::json($status1);
+            return $status1;
+            //return Response::json($status1);
         }
     }
 

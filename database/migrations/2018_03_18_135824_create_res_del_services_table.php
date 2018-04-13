@@ -14,7 +14,7 @@ class CreateResDelServicesTable extends Migration
     public function up()
     {
         Schema::create('res_del_services', function (Blueprint $table) {
-            $table->increments('resId');
+            $table->increments('id');
             $table->string('avenueName');
             $table->integer('deliveryCode');
             $table->date('deliveryDate');

@@ -15,15 +15,19 @@ class MenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function menuDishes()
+    public function menuDishes($id)
     {
-        $menuDishes = Menu::with('dishes')->get();
-        return Response::json($menuDishes);
+        $menu = Menu::where('menuId',$id)->get()->first();
+        $dishes = $menu->dishes()->get();
+        return $dishes;
+        //return Response::json($menuDishes);
     }
 
-    public function allMenus(){
-        $allmenus = Menu::all();
-        return Response::json($allmenus);
+    public function Menus($id){
+
+        $menus = Menu::select('res_id','menuName')->where('res_id',$id)->get();
+        return $menus ;
+        //return Response::json($allmenus);
     }
     /**
      * Show the form for creating a new resource.

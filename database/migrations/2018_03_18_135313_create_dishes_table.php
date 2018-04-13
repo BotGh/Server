@@ -15,13 +15,14 @@ class CreateDishesTable extends Migration
     {
         Schema::create('dishes', function (Blueprint $table) {
             $table->increments('dishId');
-            $table->integer('menuId');
+            $table->unsignedInteger('menu_id');
             $table->string('dishName');
             $table->float('dishPrice');
             $table->string('dishSize');
             $table->string('extra');
             $table->time('dishTime');
             $table->timestamps();
+            $table->foreign('menu_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

@@ -15,10 +15,10 @@ class CreateTablesTable extends Migration
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->increments('tableId');
-            $table->integer('resId');
+            $table->integer('res_id');
             $table->string('tableName');
-            $table->integer('workerId');
-            $table->integer('userId'); // in case the user have no phone
+            $table->integer('worker_id');
+            $table->integer('user_id'); // in case the user have no phone
             $table->integer('seatNo');
             $table->boolean('isReserved');
             $table->timestamps();

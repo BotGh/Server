@@ -12,10 +12,23 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function showAllOrders()
     {
-        //
+        $orders = Orders::all();
+        return $orders;
     }
+
+    public function showByUser($id)
+    {
+        $orders = Orders::select('user_id','orderType','orderStatus')->where('user_id', $id)->get();
+        return $orders;
+    }
+    public function showByTable($id)
+    {
+        $orders = Orders::select('table_id','orderType','orderStatus')->where('table_id', $id)->get();
+        return $orders;
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +37,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        //
+//        //
     }
 
     /**
@@ -46,7 +59,7 @@ class OrdersController extends Controller
      */
     public function show(Orders $orders)
     {
-        //
+       //
     }
 
     /**
@@ -72,14 +85,29 @@ class OrdersController extends Controller
         //
     }
 
+    public function cancel($id)
+    {
+        $order = Orders::find($id);
+        if ($order->status == 'Queued') {
+            $order->status = 'Canceled';
+        } else {
+            dd('Error');
+        }
+        $order->save();
+        return back()->with('status', 'Success!');
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Orders  $orders
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orders $orders)
+    public function destroy($id)
     {
-        //
+
+        Orders::find($id)->delete();
+        return redirect('order')->with('status', 'Deleted!');
     }
 }

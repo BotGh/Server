@@ -14,7 +14,7 @@ class CreateResWorkingHoursTable extends Migration
     public function up()
     {
         Schema::create('res_working_hours', function (Blueprint $table) {
-            $table->increments('resId');
+            $table->increments('wId');
             $table->dateTime('start');
             $table->dateTime('end');
             $table->boolean('open');

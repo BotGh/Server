@@ -13,10 +13,17 @@ class RestaurantsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-       public function resNames()
+    public function About()
     {
         $restaurant = Restaurants::all();
-        return Response::json($restaurant);
+        return $restaurant;
+        //return Response::json($restaurant);
+    }
+       public function resNames()
+    {
+        $restaurantNames = Restaurants::all('resName');
+        return $restaurantNames;
+       // return Response::json($restaurant);
     }
 
     /**

@@ -14,8 +14,8 @@ class CreateOrderInfosTable extends Migration
     public function up()
     {
         Schema::create('order_infos', function (Blueprint $table) {
-            $table->increments('orderId');
-            $table->integer('dishId');
+            $table->increments('infoId');
+            $table->integer('dish');
             $table->bigInteger('quantity');
             $table->string('notes');
             $table->timestamps();

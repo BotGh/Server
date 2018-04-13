@@ -12,21 +12,29 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 /*
- * Tables Routes
- */
+ Tables Routes
+*/
 Route::get('/allTables', 'TablesController@allTables');
-Route::get('/tableId/{id}', 'TablesController@unreservedTables');
 Route::get('/reservedTables', 'TablesController@reservedTables');
 Route::get('/unreservedTables', 'TablesController@unreservedTables');
 /*
  * Menu Routes
  */
-Route::get('/menuDishes/{id}', 'MenuController@menuDishes');
-Route::get('/allMenus', 'MenuController@allMenus');
+Route::get('/menuOfDishes/{id}', 'MenuController@menuDishes');
+Route::get('/dish/{id}', 'DishesController@index');
+Route::get('/resMenus/{id}', 'MenuController@Menus');
 /*
  * Restaurant Routes
  */
 Route::get('/ResNames', 'RestaurantsController@resNames');
 Route::get('/resStatus/{id}', 'ResWorkingHoursController@index');
+Route::get('/AboutRestaurant', 'RestaurantsController@About');
+/*
+ * Orders Routes
+ */
+Route::get('/allOrders', 'OrdersController@showAllOrders');
+Route::get('/byUser/{id}', 'OrdersController@showByUser');
+Route::get('/byTable/{id}', 'OrdersController@showByTable');
+Route::get('/cancelOrder/{id}', 'OrdersController@cancel');
+Route::get('/deleteOrder/{id}', 'OrdersController@destroy');
