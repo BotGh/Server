@@ -13,9 +13,9 @@ class RestaurantsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function About()
+    public function About($id)
     {
-        $restaurant = Restaurants::all();
+        $restaurant = Restaurants::all()->where(id,$id)->get();
         return $restaurant;
         //return Response::json($restaurant);
     }
@@ -24,6 +24,13 @@ class RestaurantsController extends Controller
         $restaurantNames = Restaurants::all('resName');
         return $restaurantNames;
        // return Response::json($restaurant);
+    }
+
+    public function resTables($id)
+    {
+        $res = Restaurants::where('resId',$id)->get()->first();
+        $resTables = $res->ResTables()->get();
+        return $resTables;
     }
 
     /**

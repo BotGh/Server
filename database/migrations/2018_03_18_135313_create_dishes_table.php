@@ -22,7 +22,7 @@ class CreateDishesTable extends Migration
             $table->string('extra');
             $table->time('dishTime');
             $table->timestamps();
-            $table->foreign('menu_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade');
         });
     }
 

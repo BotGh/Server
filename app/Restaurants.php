@@ -15,4 +15,11 @@ class Restaurants extends Model
 
         return $this->hasMany('App/Menu');
     }
+
+    public function ResTables(){
+
+        return $this->hasMany('App/Tables');
+
+    }
+
 }

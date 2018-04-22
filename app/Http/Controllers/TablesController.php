@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Restaurants;
 use App\Tables;
 use Illuminate\Http\Request;
 
@@ -12,33 +13,43 @@ class TablesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function allTables()
+    public function resTables($id)
     {
-        $allTables = Tables::all();
-        return $allTables ;
+        $resTables = Tables::where('res_id',$id)->get();
+        return $resTables ;
        // return Response::json($allTables)->withCallback($request->input('allTables'));
+        // return Response:json($allTables);
     }
 
-    public function reservedTables()
+    public function tableInfo($id)
     {
-        $reserved = Tables::all()->where('isReserved' ,'=' ,'1');
-        return $reserved ;
+        $tableInfo = Tables::select('tableName')->where('tableId',$id)->get();
+        return $tableInfo;
         //return Response::json($reserved);
     }
-    public function unreservedTables()
+
+    public function reservedTables($id)
     {
-        $Not_reserved = Tables::all()->where('isReserved' ,'=' ,'0');
-        return $Not_reserved ;
+        $reservedTables = Tables::where('res_id',$id)
+                            ->where('isReserved', '=', '1')->get();
+        return $reservedTables;
+        //return Response::json($reserved);
+    }
+    public function unreservedTables($id)
+    {
+        $unreservedTables = Tables::where('res_id',$id)
+            ->where('isReserved', '=', '0')->get();
+        return $unreservedTables;
         //return Response::json($Not_reserved);
     }
 
-    public function tableByID($id)
+    /*public function tableByID($id)
     {
-        $table = Tables::find($id);
+        $table = Tables::where('res_id', $id);
         $isReserved = $table->isReserved;
         return $isReserved;
         //return Response::json($isReserved);
-    }
+    }*/
 
     /**
      * Show the form for creating a new resource.

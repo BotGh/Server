@@ -14,13 +14,14 @@ use App\Restaurants;
 /*
  Tables Routes
 */
-Route::get('/allTables', 'TablesController@allTables');
-Route::get('/reservedTables', 'TablesController@reservedTables');
-Route::get('/unreservedTables', 'TablesController@unreservedTables');
+Route::get('/resTables/{id}', 'TablesController@resTables');
+Route::get('/tableInfo/{id}', 'TablesController@tableInfo');
+Route::get('/reservedTables/{id}', 'TablesController@reservedTables');
+Route::get('/unreservedTables/{id}', 'TablesController@unreservedTables');
 /*
  * Menu Routes
  */
-Route::get('/menuOfDishes/{id}', 'MenuController@menuDishes');
+Route::get('/menuNumber/{id}', 'MenuController@menuDishes');
 Route::get('/dish/{id}', 'DishesController@index');
 Route::get('/resMenus/{id}', 'MenuController@Menus');
 /*
@@ -28,7 +29,7 @@ Route::get('/resMenus/{id}', 'MenuController@Menus');
  */
 Route::get('/ResNames', 'RestaurantsController@resNames');
 Route::get('/resStatus/{id}', 'ResWorkingHoursController@index');
-Route::get('/AboutRestaurant', 'RestaurantsController@About');
+Route::get('/AboutRestaurant/{id}', 'RestaurantsController@About');
 /*
  * Orders Routes
  */

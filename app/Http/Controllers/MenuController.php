@@ -25,7 +25,7 @@ class MenuController extends Controller
 
     public function Menus($id){
 
-        $menus = Menu::select('res_id','menuName')->where('res_id',$id)->get();
+        $menus = Menu::where('res_id',$id)->get();
         return $menus ;
         //return Response::json($allmenus);
     }
